@@ -1,0 +1,62 @@
+gRPC can use protocol buffers as both its Interface Definition Language (IDL) and 
+as its underlying message interchange format.
+
+gRPC is roughly 7 times faster than REST when receiving data & roughly 10 times faster than REST 
+when sending data for this specific payload. 
+This is mainly due to the tight packing of the Protocol Buffers and the use of HTTP/2 by gRPC
+
+In gRPC, a client application can directly call a method on a server application on a different machine as 
+if it were a local object, making it easier for you to create distributed applications and services. 
+As in many RPC systems, gRPC is based around the idea of defining a service, specifying the methods 
+that can be called remotely with their parameters and return types. On the server side, 
+the server implements this interface and runs a gRPC server to handle client calls. 
+On the client side, the client has a stub (referred to as just a client in some languages) 
+that provides the same methods as the server.
+
+gRPC clients and servers can run and talk to each other in a variety of environments - from servers inside 
+Google to your own desktop - and can be written in any of gRPC’s supported languages. 
+So, for example, you can easily create a gRPC server in Java with clients in Go, Python, or Ruby. 
+In addition, the latest Google APIs will have gRPC versions of their interfaces, 
+letting you easily build Google functionality into your applications.
+
+The first step when working with protocol buffers is to define the structure for the data you want to 
+serialize in a proto file: this is an ordinary text file with a .proto extension. 
+Protocol buffer data is structured as messages, where each message is a small logical record of 
+information containing a series of name-value pairs called fields. Here’s a simple example:
+
+once you’ve specified your data structures, you use the protocol buffer compiler protoc to generate 
+data access classes in your preferred language(s) from your proto definition. 
+These provide simple accessors for each field, like name() and set_name(), as well as methods to 
+serialize/parse the whole structure to/from raw bytes. So, for instance, if your chosen language is C++, 
+running the compiler on the example above will generate a class called Person. 
+You can then use this class in your application to populate, serialize, and retrieve 
+Person protocol buffer messages.
+
+
+differece 
+gRPC allows developers to integrate services programmed in different languages. 
+gRPC uses the Protobuf (protocol buffers) messaging format, which is a highly-packed, highly-efficient messaging 
+format for serializing structured data. For a specific set of use-cases, 
+a gRPC API can serve as a more efficient alternative to a REST API 
+
+gRPC overcomes issues related to speed and weight — and offers greater efficiency when transmitting messages — 
+by using the Protobuf (protocol buffers) messaging format
+
+Platform and language agnostic like JSON
+Serializes and deserializes structured data to communicate via binary.
+As a highly-compressed format, it doesn’t achieve JSON’s level of human-readability.
+Speeds up data transmission by removing a lot of the responsibilities that JSON manages so it can focus strictly on serializing and deserializing data. 
+Data transmission is faster because Protobuf reduces the size of messages and serves as a lightweight messaging format. 
+
+
+-> Built on HTTP 2 Instead of HTTP 1.1
+REST APIs are usually built on HTTP 1.1, which uses a request-response model of communication. 
+This means that when a microservice receives multiple requests from more than one client, 
+it has to serve them one at a time, which slows the entire system
+There are three types of streaming that gRPC makes available:
+Server-side: A client sends a request message to a server. The server returns a stream of responses back to the client. After completing the responses, the server sends a status message
+Client-side
+Bidirectional
+
+Slower Implementation than REST
+

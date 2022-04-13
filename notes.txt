@@ -1,0 +1,243 @@
+Array:
+Var array_name[length]Type
+Var array_name[index] = element
+arr2:= [...]int{9,7,6,4,5,3,2,4}
+
+function
+len(myarray) 
+Comparing arrays using == operator
+
+-------------------------------------------------------------------------
+Slice:
+[]T{}
+var my_slice[]int 
+make([]T, len, cap) // func make([]T, len, cap) []T
+
+Creating a slice from an array: arr[1:6]
+len(myslice)
+cap(myslice)
+
+for 
+for e := 0; e < len(myslice); e++ 
+for index, ele := range myslice
+
+sorting:
+sort.Strings(slc1)
+sort.Ints(slc2)
+sort.IntsAreSorted(scl1)
+bytes.Trim(slice_1, "!#")
+bytes.Split(slice_1, []byte("eek"))
+-------------------------------------------------------------------------
+Strings:
+for index, chr:= range str{
+     // Statement..
+}
+for index, s := range "GeeksForGeeKs"
+
+Creating a string from the slice
+    mystring1 := string(myslice1)
+
+len(mystr)
+length2 := utf8.RuneCountInString(mystr)
+strings.Trim(str1, "!")
+strings.TrimLeft(str1, "!*")
+strings.TrimRight(str1, "!*")
+strings.TrimSpace(str2)
+strings.TrimSuffix(str1, "GeeksforGeeks")
+strings.TrimPrefix(str1, "Welcome")
+strings.Split(str1, ",")
+strings.SplitAfter(str1, ",")
+strings.SplitAfterN(str1, ",", 2)
+
+compare:
+str1 == str2
+not equal:
+str1 != str2
+Return 0, if str1 == str2.
+Return 1, if str1 > str2.
+Return -1, if str1 < str2.
+strings.Compare("gfg", "Geeks")
+
+-------------------------------------------------------------------------
+Pointer: The default value or zero-value of a pointer is always nil.
+var pointer_name *Data_Type
+var s *string
+p := &y
+
+ Declaration and initialization of the pointers can be done into a single line: var s *int=&m
+ -------------------------------------------------------------------------
+ Map:
+ 
+ var abc map[int]int
+ ggg := make(map[int]string)
+for x, j := range abc 
+
+number, ok := abc[15]
+sort.Strings(keys)
+sort.Ints(values) 
+-------------------------------------------------------------------------
+interface:
+var a1 interface{} = 98.76
+value, ok := a.(float64)
+
+switch a.(type) {
+	case int:
+		fmt.Printf("\nthe value is of integer type %d", a.(int))
+		println(a.(int))
+	case string:
+		fmt.Printf("\nthe value is of string type %s", a.(string))
+	case float64:
+		fmt.Printf("\nthe value is of float type	%T", a.(float64))
+	case bool:
+		fmt.Printf("\nthe value is of bool type	%T", a.(bool))
+	default:
+		fmt.Print("\nthe value is of other type")
+	}
+
+ -------------------------------------------------------------------------
+ time.Sleep(1 * time.Second)
+
+ wg := sync.WaitGroup{}
+ wg.add(1)
+ wg.wait()
+ wg.done()
+
+ --------------------------------------------------------------------------
+ select in go 
+ select{
+  
+        // case 1 for portal 1
+       case op1:= <- R1:
+       fmt.Println(op1)
+   
+       // case 2 for portal 2
+       case op2:= <- R2:
+       fmt.Println(op2)
+   }
+
+-----------------------------------------------------------------------------
+channel_name:= make(chan Type)
+ch := make(chan int, n) 
+Mychannel <- element
+element := <-Mychannel
+// Only to receive data
+c1:= make(<- chan bool)
+
+// Only to send data
+c2:= make(chan<-bool
+
+
+close()
+ele, ok:= <- Mychannel
+for {
+        res, ok := <-c
+        if ok == false {
+            fmt.Println("Channel Close ", ok)
+            break
+        }
+        fmt.Println("Channel Open ", res, ok)
+    }
+
+for item := range Chnl { 
+     // statements..
+}
+
+len(mychnl)
+cap(mychnl)
+
+---------------------------------------------------------------------------------
+switch optstatement; optexpression{
+case expression1: Statement..
+case expression2: Statement..
+...
+default: Statement..
+}
+
+var value interface{}
+    switch q:= value.(type) {
+       case bool:
+       fmt.Println("value is of boolean type")
+       case float64:
+       fmt.Println("value is of float64 type")
+       case int:
+       fmt.Println("value is of int type")
+       default:
+       fmt.Printf("value is of type: %T", q)
+         
+   }
+
+----------------------------------------------------------------------------------
+func changeTimestamp(v interface{}) string {
+	format := "2006-01-02T15:04:05.000"
+
+	ct, err := time.Parse(format, v.(string))
+	if err != nil {
+		log.Printf("error is parsing the timestamp format")
+	}
+	return (ct.Format("2006-01-02 15:04:05.000"))
+
+}
+----------------------------------------------------------------------------------
+mutex:
+
+var m sync.Mutex
+go worker(&w, &m)
+ m.Lock() 
+    GFG = GFG + 1
+    m.Unlock()
+
+----------------------------------------------------------------------------------
+func Marshal(v interface{}) ([]byte, error)
+
+Map keys must be strings.
+Map values must be types serializable by the json package.
+The following types are not supported: Channel, complex, and function.
+Cyclic data structures are not supported.
+Pointers will be encoded (and later decoded) as the values they point to (or 'null' if the pointer is nil).
+
+func Unmarshal(data []byte, v interface{}) error
+
+ // Serialize int
+    var x = 5
+    bytes, err := json.Marshal(x)
+    if err != nil {
+        fmt.Println("Can't serislize", x)
+    }
+
+    fmt.Printf("%v => %v, '%v'\n", x, bytes, string(bytes))
+
+    // Deserialize int
+    var r int
+    err = json.Unmarshal(bytes, &r)
+    if err != nil {
+        fmt.Println("Can't deserislize", bytes)
+    }
+
+    fmt.Printf("%v => %v\n", bytes, r)
+
+
+    -----------------------------------------------------------------------
+    type og variable:
+   1) fmt.Printf("var1 = %T\n", var1)
+   2) fmt.Println("var1 = ", reflect.TypeOf(var1))
+   3) reflect.ValueOf(var1).Kind())
+
+   -----------------------------------------------------------------------
+   How to Map a Rune to the Specified Case in Golang?
+   func To(_case int, r rune) rune
+fmt.Printf("Result 1: %c ", unicode.To(unicode.UpperCase, rune_1))
+
+Check If the Rune is a Letter or not in Golang
+func IsLetter(r rune) bool
+res_1 := unicode.IsLetter(rune_1)
+
+Check If the Rune is a Unicode Punctuation Character or not in Golang
+func IsPunct(r rune) bool
+res_1 := unicode.IsPunct(rune_1)
+
+How to check the specified rune in Golang String?
+func ContainsRune(str string, r rune) bool  
+
+https://github.com/gsingh20-DS/golang
+
+https://github.com/gengwensu/chatServerAsync/blob/master/chatServer.go

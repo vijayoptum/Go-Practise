@@ -1,0 +1,18 @@
+mysql.server start
+mysql.server stop
+mysql -u root -p
+
+
+SELECT Salary 
+FROM EmployeePosition E1 
+WHERE N-1 = ( 
+      SELECT COUNT( DISTINCT ( E2.Salary ) ) 
+      FROM EmployeePosition E2 
+      WHERE E2.Salary >  E1.Salary );
+
+SELECT E.EmpId, E.Project, E.Salary
+FROM (
+    SELECT *, Row_Number() OVER(ORDER BY EmpId) AS RowNumber
+    FROM EmployeeSalary
+) E
+WHERE E.RowNumber % 2 = 0;

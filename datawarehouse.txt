@@ -1,0 +1,120 @@
+Defining business requirements
+Setting up physical environments
+Introducing data modelling
+Choosing your ETL solution
+Online analytics processing cube (OLAP cube)
+Creating a front end
+Optimising queries
+Rolling out the end product
+
+
+Organization-wide consensus
+Data integrity
+Implementation efficiency
+Operational efficiency
+User friendliness
+IT standard compliance
+Scalability
+
+
+Gathering business requirements
+Identifying the necessary sources
+Identifying the facts
+Defining the dimensions
+Defining the attributes
+Redefine the dimensions and attributes if required
+Organize the Attribute hierarchy
+Define Relationships
+Assign unique Identifiers
+
+
+Data modeling:
+Conceptual data models
+Logical data models.
+Physical data models
+
+
+Data modeling process:
+Identify the entities
+Identify key properties of each entity. 
+Identify relationships among entities
+Map attributes to entities completely
+Assign keys as needed, and decide on a degree of normalization that balances the need to reduce redundancy with performance requirements.
+Finalize and validate the data model.
+
+Types of data modeling
+Hierarchical data models
+Relational data models 
+Entity-relationship (ER) data models 
+Object-oriented data models
+Dimensional data models
+
+
+
+Types of no sql 
+Document databases
+key value database
+Wide-column stores store data in tables, rows, and dynamic columns.
+Graph databases - nodes and edges, Nodes typically store information about people, places, and things, while edges store information about the relationships between the nodes.
+
+differences between RDBMS and relational databases
+Flexibility of the schema
+Scaling technique
+Support for transactions
+Reliance on data to object mapping
+
+why to use non sql
+Fast-paced Agile development
+Storage of structured and semi-structured data
+Huge volumes of data
+Requirements for scale-out architecture
+Modern application paradigms like microservices and real-time streaming
+
+When huge amount of data need to be stored and retrieved .
+The relationship between the data you store is not that important
+The data changing over time and is not structured.
+Support of Constraints and Joins is not required at database level
+The data is growing continuously and you need to scale the database regular to handle the data.
+
+
+SELECT * FROM(
+SELECT employee_name, salary, DENSE_RANK() 
+OVER(ORDER BY salary DESC)r FROM Employee) 
+WHERE r=&n;
+
+
+SELECT department, employee, salary
+FROM 
+    (SELECT e.name AS employee, e.salary, d.name AS department, 
+           RANK() OVER (PARTITION BY departmentid ORDER BY salary DESC) AS rnk
+    FROM employee e JOIN department d ON e.departmentid = d.id) temp
+WHERE rnk = 1
+
+SELECT e.name, e.name, d.salary 
+FROM employee e, department d   
+WHERE e.departmentid = d.id 
+      AND NOT EXISTS (SELECT 1 FROM employee e2 WHERE e2.Salary > e.Salary AND e.departmentid = e2.departmentid) 
+
+
+Serverless computing is a cloud computing execution model in which the cloud provider allocates machine 
+resources on demand, taking care of the servers on behalf of their customers. 
+"Serverless" is a misnomer in the sense that servers are still used by cloud service providers to 
+execute code for developers.
+
+Relational Serverless Databases
+
+CockroachDB Serverless
+PlanetScale DB Serverless
+Amazon Aurora Serverless
+[B] NoSQL Serverless Databases
+
+Amazon DynamoDB
+Google FireStore
+Fauna DB
+
+Azure Functions is a serverless solution that allows you to write less code, maintain less infrastructure, 
+and save on costs. Instead of worrying about deploying and maintaining servers, the cloud infrastructure 
+provides all the up-to-date resources needed to keep your applications running
+
+There are currently four durable function types in Azure Functions: activity, orchestrator, entity, and client. 
+The rest of this section goes into more details about the types of functions involved in an orchestration

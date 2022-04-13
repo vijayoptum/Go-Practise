@@ -1,0 +1,22 @@
+The various factors responsible for using Cassandra are
+
+Gigabytes to petabytes scalabilities
+It could be a column-oriented information
+No single purpose of failure
+No want for a separate caching layer
+Flexible schema style
+It has versatile data storage, simple knowledge distribution, and quick writes
+It supports ACID (Atomicity, Consistency, Isolation, and Durability) properties
+Multi-datacentre and cloud capable
+Data compression
+
+SSTable?
+Answer:
+SSTable is also known as ‘Sorted String Table,’. 
+In it memtables are stored on disk and exist for each Cassandra table. 
+Being changeless, SStables don’t enable to any extent further addition and removal of data items once written.
+ For every SSTable, 3 files are created by Cassandra like partition index, partition outline, and a bloom filter.
+
+ Mem-table in Cassandra?
+Answer:
+It is a memory-resident data structure. once commit log, the info is written to the mem-table. Mem-table is in-memory/write-back cache house consisting of the content in key and column format. The info in mem- a table is sorted by key, and every column family consists of a definite mem-table that retrieves column knowledge via the key.

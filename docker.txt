@@ -1,0 +1,25 @@
+Docker is a software platform that allows you to build, test, and deploy applications quickly. 
+Docker packages software into standardized units called containers that have everything the software 
+needs to run including libraries, system tools, code, and runtime. Using Docker, 
+you can quickly deploy and scale applications into any environment and know your code will run.
+
+The three main Docker components are:
+
+1)Docker Client. Performs Docker build pull and run operations to open up communication with the Docker Host. 
+The Docker command then employs Docker API to call any queries to run.
+2)Docker Host. Contains Docker daemon, containers, and associated images. 
+The Docker daemon establishes a connection with the Registry. 
+The stored images are the type of metadata dedicated to containerized applications.
+3)Registry. This is where Docker images are stored. There are two of them, a public registry and a private one. Docker Hub and Docker Cloud are two public registries available for use by anyone.
+
+
+images/flower.svg
+Kubernetes, also known as K8s, is an open-source system for automating deployment, scaling, 
+and management of containerized applications.
+
+It groups containers that make up an application into logical units for easy management and discovery
+
+Stringer is a tool to automate the creation of methods that satisfy the fmt.Stringer interface.
+
+
+

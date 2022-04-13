@@ -1,0 +1,144 @@
+What is Golang?
+Go is a high level, general-purpose programming language that is very strongly and statically typed by 
+providing support for garbage collection and concurrent programming. 
+
+the advantages of GO:
+GO compiles very quickly
+Go supports concurrency at the language level
+Functions are first class objects in GO
+GO has garbage collection
+Strings and Maps are built into the language
+Golang is faster than other programming languages, which enhances the availability and reliability of services.
+
+Go is an effort to have:
+
+Dynamically typed language and interpreted language
+Compiled language and the safety and efficiency of statistically typed
+To be fast in the compilation
+To support the multi-core computing
+
+the benefits of using Go compared to other languages?
+1) Unlike other languages which started as academic experiments, Go code is pragmatically designed. 
+Every feature and syntax decision is engineered to make life easier for the programmer.
+2) Golang is optimized for concurrency and works well at scale.
+3) Golang is often considered more readable than other languages due to a single standard code format.
+4) Automatic garbage collection is notably more efficient than Java or Python because it executes concurrently alongside the program.
+
+Package:
+The purpose of a package is to design and maintain a large number of programs by grouping related features together 
+into single units so that they can be easy to maintain and understand and independent of the other package programs. 
+This modularity allows them to share and reuse.
+
+
+String:
+it is a sequence of variable-width characters where each and every character is represented by one or more 
+bytes using UTF-8 Encoding.
+
+strings are the immutable chain of arbitrary bytes(including bytes with zero value) or string is a read-only 
+slice of bytes and the bytes of the strings can be represented in the Unicode text using UTF-8 encoding.
+
+
+Pointers:
+A pointer is a special kind of variable that is not only used to store the memory addresses of other variables 
+but also points where the memory is located and provides ways to find out the value stored at that memory location.
+
+built-in-support in GO includes
+Container: container/list , container/heap
+Web Server: net/http
+Cryptography: Crypto/md5 , crypto/sha1
+Compression: compress/ gzip
+Database: database/sql
+
+You can access the command line argument using the os.Args variables.
+
+Golang uses the following types:
+
+Method
+Boolean
+Numeric
+String
+Array
+Slice
+Struct
+Pointer
+Function
+Interface
+Map
+Channel
+
+Golang doesn't have the inheritance concept. But to support code reuse and polymorphism functionality, 
+it provides a composition, embedding, and interfaces.
+you can mimic inheritance behavior using composition to use an existing struct object to define a starting behavior of a new object. 
+Once the new object is created, functionality can be extended beyond the original struct.
+
+Robert Griesemer, Rob Pike, and Ken Thompson.
+
+List the operators in Golang?
+Arithmetic operators
+Bitwise operators
+Relational operators
+Logical operators
+Assignment operators
+Misc operators
+Q11. List data types on Golang?
+There are 4 data types in the Go language
+
+Basic type numbers, strings, and booleans
+Aggregate type structures and arrays
+Reference type slices, pointers, maps, channels, and functions
+Interface type
+
+workspace of golang:
+“Src” the source file regulated into packages 
+“Pkg” package objects are stored in the directory
+“Bin” contains executable commands
+
+Is GoLang fast?
+Golang’s concurrency model and small syntax make Golang fast programming language, 
+Golang compilation is very fast, Go hyperlinks all the dependency libraries into a single binary file, 
+as a result, putting off the dependence on servers. 
+
+Go language interfaces differ from other languages. 
+In Go language, the interface is a system type that is applied to designate a set of 1 or
+ more method signatures plus the interface is abstract, 
+ so you are not permitted to create a case of the interface.
+
+ The Go way to implement:
+
+Encapsulation - Go encapsulates things at the package level. 
+Names that start with a lowercase letter are only visible within that package. 
+You can hide anything in a private package and just expose specific types, interfaces, and factory functions.
+
+Inheritance - composition by embedding an anonymous type is equivalent to implementation inheritance.
+
+Polymorphism - A variable of type interface can hold any value which implements the interface. 
+This property of interfaces is used to achieve polymorphism in Go.
+
+Untyped constants
+Typed constants
+
+Data Structure – Struct
+Encapsulation → state [“fields”] behaviour [“methods”] export / unexported
+Reusability → Inheritance [“Embedded Types”]
+Polymorphism → Interfaces
+Overriding → Promotion
+
+
+A running program will store objects in two memory locations, the heap and the stack. 
+Garbage collection operates on the heap, not the stack. 
+The stack is a LIFO data structure that stores function values. 
+
+
+Empty struct struct{} is realized in a special way in Go.
+->It’s a smallest building block in Go. It’s size is literally 0 bytes.
+->If it has zero size. you may create a slice of 1000’s empty structures and this slice will be very tiny. 
+    Because really Go stores only a number of them in the slice but not them itself. The same story with channels.
+->All pointers to it always point to the same special place in memory.
+->Very useful in channels when you notify about some event but you don’t need to pass any information about it, 
+    only a fact. Best solution is to pass an empty structure because it will only increment a counter in the channel but not assign memory, copy elements and so on. Sometime people use Boolean values for this purpose, but it’s much worse.
+->Zero size container for methods. You may want have a mock for testing interfaces. Often you don’t need data on it, just methods with predefined input and output.
+->Go has no Set object. Bit can be easily realized as a map[keyType]struct{}. This way map keeps only keys and no values.
+
+
+mikolaj_wiecz@hcl.com
+https://we.tl/t-Qh3khfnRWF

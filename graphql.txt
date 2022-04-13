@@ -1,0 +1,106 @@
+GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data. 
+GraphQL provides a complete and understandable description of the data in your API, 
+gives clients the power to ask for exactly what they need and nothing more, 
+makes it easier to evolve APIs over time, and enables powerful developer tools.
+
+Apps using GraphQL are fast and stable because they control the data they get, not the server.
+
+GraphQL queries access not just the properties of one resource but also smoothly follow references between them. 
+While typical REST APIs require loading from multiple URLs, GraphQL APIs get all the data 
+your app needs in a single request. Apps using GraphQL can be quick even on slow mobile network connections.
+
+Add new fields and types to your GraphQL API without impacting existing queries. 
+Aging fields can be deprecated and hidden from tools. By using a single evolving version, 
+GraphQL APIs give apps continuous access to new features and encourage cleaner, more maintainable server code.
+
+gqlgen is a library for creating GraphQL applications in Go.   
+
+GraphQL server:
+A GraphQL server is able to receive requests in GraphQL Query Language format and return response in desired form. 
+GraphQL is a query language for API so you can send queries and ask for what you need and exactly get that piece of data
+
+Schema-Driven Development
+In GraphQL your API starts with a schema that defines all your types, queries and mutations,
+ It helps others to understand your API. So it’s like a contract between server and the client. 
+ Whenever you need to add a new capability to a GraphQL API you must redefine schema file and 
+ then implement that part in your code. GraphQL has its Schema Definition Language for this purpose.
+
+ Here is a description from gqlgen about the generated files:
+
+gqlgen.yml — The gqlgen config file, knobs for controlling the generated code.
+graph/generated/generated.go — The GraphQL execution runtime, the bulk of the generated code.
+graph/model/models_gen.go — Generated models required to build the graph. 
+                            Often you will override these with your own models. Still very useful for input types.
+graph/schema.graphqls — This is the file where you will add GraphQL schemas.
+graph/schema.resolvers.go — This is where your application code lives. 
+                            generated.go will call into this to get the data the user has requested.
+server.go — This is a minimal entry point that sets up an http.Handler to the generated GraphQL server. 
+            start the server with go run server.go and open your browser and you should see the graphql 
+                playground, So setup is right!
+
+Defining Our Schema:
+file: graph/schema.graphqls
+
+Queries:
+a query in graphql is asking for data, you use a query and specify what you want and graphql will return it back to you.
+schema.resolvers.go
+
+ Mutation
+Simply mutations are just like queries but they can cause a data write, 
+Technically Queries can be used to write data too however it’s not suggested to use it.
+ So mutations are like queries, they have names, parameters and they can return data
+
+ Database
+ Authentication
+
+ Json Web Token is a string containing a hash that helps us authenticate users. Every token is constructed of 3 parts,
+  like xxxxx.yyyyy.zzzzz. These three parts are: Header, Payload, and Signature.
+  HEADER:ALGORITHM & TOKEN TYPE
+  PAYLOAD:DATA
+  VERIFY SIGNATURE
+
+
+  Following are the reasons of using GraphQL:
+
+It provides a human-readable query.
+In GraphQL, it is very easy to deal with many database.
+It is suited for microservices and complex systems.
+You can fetch data with a single API call.
+It helps you with query batching and caching.
+You do not face, over, and under fetching problems.
+Tailoring requests to your needs.
+It helps you to discover the schema in the appropriate format.
+GraphQL automatically keeps documentation in sync with API changes.
+API evolution is possible without versioning.
+GraphQL fields are used in multiple queries that can be shared to a higher component level for reuse.
+You can choose which functions to expose and how they work.
+It can be used for rapid application prototyping.
+
+
+important applications of GraphQL:
+
+It provides Relay and other client frameworks
+GraphQL helps you to improve the performance of the mobile app.
+It can reduce over fetching problem to lower server-side cloud service and decrease the client-side, network usage.
+It can be used when the client application has to specify which fields are needed in long query format.
+GraphQL can be fully utilized when you have to add functionality to your old or existing API.
+It is used when you have to simplify complex API.
+Mix and mash façade pattern, which is commonly used in object-oriented programming.
+When you have to aggregate data from more than one place into one convenient API.
+You can use GraphQL as an abstraction on an existing API to specify response structure based on user needs.
+
+
+Graphqlkey components:
+Query
+    fields
+    arguments
+resolvers
+Resolvers provide the directions for converting GraphQL operation into data. 
+They resolve the query to data by defining resolver functions.
+It displays the server the process as well as location to fetch data according to a specific field. 
+The resolver also separates database schema and API schema. 
+The separated information helps to modify the content obtained from the database.
+
+Schema
+A GraphQL schema is the center of GraphQL implementation. 
+It describes the functionality available to the clients which are connecting to it.
