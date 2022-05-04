@@ -126,6 +126,56 @@ Interfaces :
     it is necessary to implement all the methods declared in the interface for implementing an interface. 
     The go language interfaces are implemented implicitly. And it does not contain any specific keyword to implement an interface just like other languages
 
+Defer :
+    The defer keyword instructs a function to execute after the surrounding function completes.
+        Example :
+        ========
+            package main
+
+            import "fmt"
+
+            func main() {
+            // When we add `defer` before a function, that function is executed
+            // after the surrounding function completes
+            defer fmt.Println("this is printed once the function completes")
+
+            fmt.Println("this is printed first")
+            fmt.Println("this is printed second")
+            }
+
+            // OutPut :
+                // this is printed first
+                // this is printed second
+                // this is printed once the function completes
+
+        EXAMPLE 2 :
+        ===========
+            package main
+
+            import "fmt"
+
+            func main() {
+            defer fmt.Println("this is printed once main completes")
+
+            greet()
+
+            fmt.Println("this is printed after greet is called")
+            }
+
+            func greet() {
+            // this function executes once `greet()` completes.
+            // It is independent of deferred functions declared elsewhere
+            defer fmt.Println("printed after the first greeting")
+
+            fmt.Println("first greeting")
+            }
+
+        // Output :
+            // first greeting
+            // printed after the first greeting
+            // this is printed after greet is called
+            // this is printed once main completes    
+
 List the operators in Golang?
     Arithmetic operators
     Bitwise operators
