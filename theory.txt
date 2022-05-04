@@ -70,6 +70,44 @@ Once the new object is created, functionality can be extended beyond the origina
 
 Robert Griesemer, Rob Pike, and Ken Thompson.
 
+concurrency Vs Paralallysam  :
+    concurrency :
+        Concurrency involves structuring a program so that two or more tasks may be in progress simultaneously,
+        Note that while parallelism requires more than one processor or thread, concurrency does not.
+        Concurrent programs may or may not run in parallel
+    Paralallysam : 
+        Parallel computing allows us to break down complex problems into smaller pieces, and execute those smaller problems simultaneously. 
+        The alternative, using a single process, requires each step of the problem to be executed sequentially. The benefit here is that executing these smaller pieces of the problem simultaneously can increase the speed in which the overall problem is solved
+    
+
+
+Goroutines :
+     A Goroutine is a function or method which executes independently and simultaneously in connection with any other Goroutines present in your program. Or in other words, every concurrently executing activity in Go language is known as a Goroutines. You can consider a Goroutine like a light weighted thread. 
+     The cost of creating Goroutines is very small as compared to the thread. Every program contains at least a single Goroutine and that Goroutine is known as the main Goroutine. All the Goroutines are working under the main Goroutines if the main Goroutine terminated, then all the goroutine present in the program also terminated. Goroutine always works in the background.
+     goroutines as light-weight, inexpensive threads managed by the Go runtime.
+     goroutines are so inexpensive, we can run hundreds or thousands of them in our program without concern
+
+Advantages of Goroutines :
+    Goroutines are cheaper than threads.
+    Goroutine are stored in the stack and the size of the stack can grow and shrink according to the requirement of the program. But in threads, the size of the stack is fixed.
+    Goroutines can communicate using the channel and these channels are specially designed to prevent race conditions when accessing shared memory using Goroutines.
+    Suppose a program has one thread, and that thread has many Goroutines associated with it. If any of Goroutine blocks the thread due to resource requirement 
+    then all the remaining Goroutines will assign to a newly created OS thread. All these details are hidden from the programmers.
+
+Select statement :
+    Select statement waits until the communication(send or receive operation) is prepared for some cases to begin.
+
+Race condition : 
+    A race condition occurs when multiple threads try to access and modify the same data (memory address)
+    E.g., if one thread tries to increase an integer and another thread tries to read it, this will cause a race condition. 
+    On the other hand, there won't be a race condition, if the variable is read-only. In golang, threads are created implicitly when Goroutines are used.
+
+How does mutex work?
+    Mutex is created in an unlocked state.
+    When the first call to mutex.Lock() is made, mutex state changes to Locked.
+    Any other calls to mutex.Lock() will block the goroutine until mutex.Unlock() is called
+    So, only one thread can access the critical section.
+
 Channels :
     a channel is a medium through which a goroutine communicates with another goroutine and this communication is lock-free. Or in other words, 
     a channel is a technique which allows to let one goroutine to send data to another goroutine. 
@@ -81,7 +119,12 @@ Channels :
     
     Send operation: The send operation is used to send data from one goroutine to another goroutine with the help of a channel. Values like int, float64, and bool can safe and easy to send through a channel because they are copied so there is no risk of accidental concurrent access of the same value. 
     Similarly, strings are also safe to transfer because they are immutable. But for sending pointers or reference like a slice, map, etc. through a channel are not safe because the value of pointers or reference may change by sending goroutine or by the receiving goroutine at the same time and the result is unpredicted. So, when you use pointers or references in the channel you must make sure that they can only access by the one goroutine at a time.
+    Channel are two type which are unbuffered and buffered. unbuffered channel are sychronized and buffered as asychronized.
 
+Interfaces :
+    the interface is a collection of methods as well as it is a custom type.
+    it is necessary to implement all the methods declared in the interface for implementing an interface. 
+    The go language interfaces are implemented implicitly. And it does not contain any specific keyword to implement an interface just like other languages
 
 List the operators in Golang?
     Arithmetic operators
