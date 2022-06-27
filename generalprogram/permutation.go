@@ -29,6 +29,6 @@ func main() {
 	kkk := []rune(s)
 
 	perm(kkk, func(a []rune) { println(string(a)) })
-	//perm([]rune("abc"), func(a []rune) { println(string(a)) })
+	perm([]rune("abc"), func(a []rune) { println(string(a)) })
 
 }

@@ -14,8 +14,8 @@ func main() {
 	for i := range arr {
 		println(arr[i])
 	}
-	fmt.Printf("\nonly arr%d", arr)
-	fmt.Printf("\nonly single%d", arr[0])
+	fmt.Printf("\n only arr%d", arr)
+	fmt.Printf("\n only single%d", arr[0])
 
 	arr1 := [][]int{{1, 2, 3, 4}, {5, 6, 7, 8}}
 	fmt.Printf("\nonly arr1%d", arr1)

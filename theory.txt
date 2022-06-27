@@ -231,6 +231,10 @@ A running program will store objects in two memory locations, the heap and the s
 Garbage collection operates on the heap, not the stack. 
 The stack is a LIFO data structure that stores function values. 
 
+What is a Linked List?
+    A Linked List is a linear Data Structure but not doesn’t have continuous memory addresses like Arrays or Slices. Linked Lists are Dynamic in nature.
+    In Golang Arrays we have to give size of the array while declaration, slice in golang uses arrays under the hood.
+    The Linked List is a Dynamic Data Structure, it occupies memory only for the stored data.
 
 Empty struct struct{} is realized in a special way in Go.
     ->It’s a smallest building block in Go. It’s size is literally 0 bytes.
